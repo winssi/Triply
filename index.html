@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Triply — Le voyage idéal, à votre mesure</title>
+  <meta name="description" content="Triply vous aide à trouver et organiser le voyage idéal selon votre budget, vos dates et vos envies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf7f1;
+      --ink: #1d2a33;
+      --muted: #5b6a73;
+      --accent: #e8643c;
+      --accent-ink: #ffffff;
+      --sea: #1f6f78;
+      --card: #ffffff;
+      --line: #e9e1d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #11181d;
+        --ink: #f2ede6;
+        --muted: #a3b0b7;
+        --accent: #f07a52;
+        --sea: #5fb3bb;
+        --card: #18222a;
+        --line: #26333c;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    header { padding: 24px 0; }
+    nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700; font-size: 1.6rem; text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo svg { width: 30px; height: 30px; }
+    .nav-cta {
+      text-decoration: none; font-weight: 600; font-size: .95rem;
+      border: 1.5px solid var(--ink); padding: 8px 16px; border-radius: 999px;
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px;
+      align-items: center; padding: 56px 0 80px;
+    }
+    .eyebrow {
+      display: inline-block; font-size: .8rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--sea);
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif; font-weight: 700;
+      font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.05;
+      letter-spacing: -.02em; margin-bottom: 20px;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 32em; margin-bottom: 32px; }
+
+    .planner {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 20px; padding: 24px;
+      box-shadow: 0 20px 50px -30px rgba(29,42,51,.35);
+    }
+    .planner h2 { font-family: Fraunces, Georgia, serif; font-size: 1.3rem; margin-bottom: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .field label { font-size: .85rem; font-weight: 600; color: var(--muted); }
+    .field input, .field select {
+      font: inherit; color: var(--ink); background: var(--bg);
+      border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .budget-val { font-weight: 600; color: var(--ink); }
+    input[type=range] { accent-color: var(--accent); padding: 0; border: 0; background: none; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font: inherit; font-size: .88rem; cursor: pointer;
+      border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+      padding: 6px 12px; border-radius: 999px;
+    }
+    .chip[aria-pressed=true] { background: var(--sea); border-color: var(--sea); color: #fff; }
+    .btn {
+      display: inline-block; width: 100%; margin-top: 8px; cursor: pointer;
+      font: inherit; font-weight: 600; font-size: 1rem;
+      background: var(--accent); color: var(--accent-ink);
+      border: 0; border-radius: 12px; padding: 14px 20px;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .result {
+      margin-top: 14px; font-size: .92rem; color: var(--muted);
+      min-height: 1.5em;
+    }
+
+    .features { padding: 40px 0 80px; }
+    .features h2, .steps h2 {
+      font-family: Fraunces, Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 32px; letter-spacing: -.01em;
+    }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 24px;
+    }
+    .icon {
+      width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+      background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .icon svg { width: 22px; height: 22px; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .card p { color: var(--muted); font-size: .97rem; }
+
+    .steps { padding: 0 0 90px; }
+    .steps ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
+    .steps li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 16px; }
+    .steps li::before {
+      content: "0" counter(s); font-family: Fraunces, Georgia, serif;
+      font-size: 1.6rem; color: var(--accent); display: block; margin-bottom: 6px;
+    }
+    .steps li strong { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+    .steps li span { color: var(--muted); }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding-top: 24px; gap: 36px; }
+      .grid, .steps ol { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="#">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M9 19c4-1 6-6 14-8-3 3-5 7-6 11l-2-4-6 1z" fill="var(--accent)"/>
+          </svg>
+          Triply
+        </a>
+        <a class="nav-cta" href="#planifier">Planifier un voyage</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">Votre assistant de voyage</span>
+        <h1>Le voyage idéal, <em>à votre mesure.</em></h1>
+        <p class="lead">Triply vous aide à trouver et organiser le voyage parfait selon votre budget, vos dates et vos envies. Moins d'onglets ouverts, plus de temps pour rêver.</p>
+      </div>
+
+      <form class="planner" id="planifier" onsubmit="return planifier(event)">
+        <h2>Où partons-nous ?</h2>
+        <div class="row">
+          <div class="field">
+            <label for="depart">Départ</label>
+            <input id="depart" type="date" required>
+          </div>
+          <div class="field">
+            <label for="retour">Retour</label>
+            <input id="retour" type="date" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="budget">Budget par personne : <span class="budget-val" id="budgetVal">1 200 €</span></label>
+          <input id="budget" type="range" min="200" max="5000" step="100" value="1200">
+        </div>
+        <div class="field">
+          <label>Vos envies</label>
+          <div class="chips" id="envies">
+            <button type="button" class="chip" aria-pressed="false">🏖️ Plage</button>
+            <button type="button" class="chip" aria-pressed="false">🏔️ Montagne</button>
+            <button type="button" class="chip" aria-pressed="false">🏛️ Culture</button>
+            <button type="button" class="chip" aria-pressed="false">🍝 Gastronomie</button>
+            <button type="button" class="chip" aria-pressed="false">🌿 Nature</button>
+            <button type="button" class="chip" aria-pressed="false">🎉 Fête</button>
+          </div>
+        </div>
+        <button class="btn" type="submit">Trouver mon voyage</button>
+        <p class="result" id="result" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="wrap features">
+      <h2>Tout votre voyage, au même endroit</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Respecte votre budget</h3>
+          <p>Indiquez combien vous voulez dépenser : Triply ne vous propose que des destinations qui tiennent dans votre enveloppe.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <h3>S'adapte à vos dates</h3>
+          <p>Un week-end prolongé ou trois semaines d'été, les suggestions tiennent compte de la durée et de la saison.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Colle à vos envies</h3>
+          <p>Plage, randonnée, musées ou bonnes tables : choisissez ce qui vous fait vibrer et laissez Triply composer le reste.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap steps">
+      <h2>Comment ça marche</h2>
+      <ol>
+        <li><strong>Dites-nous tout</strong><span>Vos dates, votre budget et ce qui vous fait envie.</span></li>
+        <li><strong>Comparez les idées</strong><span>Des destinations sur mesure, avec une estimation claire des coûts.</span></li>
+        <li><strong>Organisez et partez</strong><span>Un itinéraire jour par jour, prêt à partager avec vos compagnons.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Triply</span>
+      <a href="https://github.com/winssi/Triply">Voir le projet sur GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const budget = document.getElementById('budget');
+    const budgetVal = document.getElementById('budgetVal');
+    const fmt = n => Number(n).toLocaleString('fr-FR') + ' €';
+    budget.addEventListener('input', () => budgetVal.textContent = fmt(budget.value));
+
+    document.querySelectorAll('#envies .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') !== 'true');
+      });
+    });
+
+    function planifier(e) {
+      e.preventDefault();
+      const d = new Date(document.getElementById('depart').value);
+      const r = new Date(document.getElementById('retour').value);
+      const out = document.getElementById('result');
+      const jours = Math.round((r - d) / 86400000);
+      if (!(jours > 0)) {
+        out.textContent = 'La date de retour doit être après la date de départ.';
+        return false;
+      }
+      const envies = [...document.querySelectorAll('#envies .chip[aria-pressed=true]')]
+        .map(c => c.textContent.replace(/^\S+\s/, '').toLowerCase());
+      out.textContent = `${jours} jour${jours > 1 ? 's' : ''}, ${fmt(budget.value)} par personne` +
+        (envies.length ? `, envie de ${envies.join(', ')}` : '') +
+        ' — la recherche de destinations arrive bientôt sur Triply !';
+      return false;
+    }
+  </script>
+</body>
+</html>
