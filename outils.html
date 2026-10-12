@@ -5,158 +5,376 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Outils — Triply</title>
   <meta name="description" content="25 ressources de design et de code pour créer des sites web modernes avec l'IA.">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Alumni+Sans:wght@100;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    /* Système visuel inspiré de « Neo Kinpaku » (pbakaus/impeccable, DESIGN.md, Apache-2.0) */
     :root {
-      --kinpaku: oklch(84% 0.19 80.46);
-      --kinpaku-pale: oklch(86% 0.07 84);
-      --kinpaku-deep: oklch(61% 0.085 78);
-      --patina: oklch(70% 0.12 188);
-      --patina-text: oklch(76% 0.088 190);
-      --dark-ink: oklch(14% 0.018 95);
-
-      --ground: oklch(7% 0.006 95);
-      --deep: oklch(4% 0.004 95);
-      --raised: oklch(11% 0.006 95);
-      --graphite: oklch(15% 0.008 95);
-      --graphite-2: oklch(19% 0.008 95);
-
-      --head: oklch(91% 0 0);
-      --text: oklch(88% 0 0);
-      --muted: oklch(72% 0 0);
-      --faint: oklch(62% 0 0);
-
-      --rule: oklch(78% 0 0 / 0.16);
-      --rule-strong: oklch(74% 0.09 82 / 0.6);
-      --link: var(--kinpaku);
-      --label: var(--patina-text);
-      --focus: var(--patina);
-
-      --display: "Alumni Sans", "Albert Sans", Arial, sans-serif;
-      --sans: "Albert Sans", "Avenir Next", "Helvetica Neue", Arial, system-ui, sans-serif;
-      --mono: ui-monospace, SFMono-Regular, "Roboto Mono", Consolas, monospace;
-      --ease: cubic-bezier(.2, .7, .2, 1);
+      --black: #000;
+      --ink: #eeeae3;
+      --muted: #8d8880;
+      --faint: #5b5853;
+      --line: rgba(255, 255, 255, .08);
+      --line-2: rgba(255, 255, 255, .16);
+      --serif: "Instrument Serif", "Times New Roman", serif;
+      --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+      --ease: cubic-bezier(.16, 1, .3, 1);
       color-scheme: dark;
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --ground: oklch(97% 0.012 95);
-        --deep: oklch(94% 0.014 95);
-        --raised: oklch(99% 0.008 95);
-        --graphite: oklch(91% 0.012 95);
-        --graphite-2: oklch(88% 0.014 95);
-        --head: oklch(18% 0.02 95);
-        --text: oklch(25% 0.018 95);
-        --muted: oklch(45% 0.015 95);
-        --faint: oklch(55% 0.012 95);
-        --rule: oklch(25% 0.02 95 / 0.14);
-        --rule-strong: oklch(49% 0.08 188 / 0.7);
-        /* Sur papier, l'or ne sert pas pour le petit texte : le vert-de-gris prend le relais */
-        --link: oklch(49% 0.08 188);
-        --label: oklch(49% 0.08 188);
-        --focus: oklch(49% 0.08 188);
-        color-scheme: light;
-      }
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--ground); color: var(--text);
-      font-family: var(--sans); font-size: 1rem; line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
+    html { background: var(--black); overflow-x: clip; }
+    body { background: var(--black); color: var(--ink); font-family: var(--sans); font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
     a { color: inherit; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+    :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 4px; border-radius: 6px; }
 
-    /* En-tête */
-    header { border-bottom: 1px solid var(--rule); }
-    nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--head); }
-    .brand svg { width: 26px; height: 26px; }
-    .wordmark { font-family: var(--display); font-weight: 400; font-size: 1.375rem; letter-spacing: .15em; text-transform: uppercase; line-height: 1; }
-    .navlink { font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color .2s var(--ease); }
-    .navlink:hover { color: var(--link); }
+    /* ---------- En-tête ---------- */
+    header { position: relative; z-index: 2; }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--serif); font-size: 1.6rem; letter-spacing: -.01em; }
+    .brand svg { width: 22px; height: 22px; }
+    .back { font-size: .9rem; color: var(--muted); text-decoration: none; transition: color .3s; }
+    .back:hover { color: var(--ink); }
 
-    /* Intro */
-    .intro { padding: 80px 0 48px; display: grid; grid-template-columns: 1fr minmax(0, 26rem); gap: 48px; align-items: end; }
-    .eyebrow { display: block; font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--label); margin-bottom: 20px; }
-    h1 {
-      font-family: var(--display); font-weight: 100; color: var(--head);
-      font-size: clamp(3.4rem, 6.5vw, 5.6rem); line-height: 1.02; letter-spacing: -.01em;
+    /* ---------- Hero ---------- */
+    .hero { position: relative; padding: 72px 0 88px; }
+    .halo {
+      position: absolute; inset: -240px -20vw auto auto; width: 820px; height: 620px; pointer-events: none; z-index: 0;
+      background: radial-gradient(closest-side, rgba(146, 122, 255, .22), transparent 70%),
+                  radial-gradient(closest-side at 70% 60%, rgba(255, 160, 110, .14), transparent 70%);
+      filter: blur(20px); animation: drift 18s ease-in-out infinite alternate;
     }
-    h1 span { color: var(--kinpaku); font-weight: 300; }
-    .lead { color: var(--muted); max-width: 65ch; }
-    .seam { height: 1px; background: linear-gradient(90deg, var(--kinpaku) 0, var(--kinpaku-deep) 40%, transparent 100%); opacity: .8; }
+    @keyframes drift { to { transform: translate(-120px, 80px) scale(1.1); } }
+    .hero h1 {
+      position: relative; z-index: 1;
+      font-family: var(--serif); font-weight: 400; font-size: clamp(3.2rem, 8.4vw, 7.4rem);
+      line-height: .95; letter-spacing: -.035em; max-width: 11ch;
+    }
+    .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; }
+    .hero h1 .w > span { display: inline-block; transform: translateY(105%); animation: rise 1.1s var(--ease) forwards; }
+    @keyframes rise { to { transform: none; } }
+    .hero p { position: relative; z-index: 1; margin-top: 32px; max-width: 46ch; color: var(--muted); font-size: 1.125rem; font-weight: 300; opacity: 0; animation: fade 1s .7s var(--ease) forwards; }
+    @keyframes fade { to { opacity: 1; } }
 
-    /* Barre d'outils */
-    .toolbar { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; padding: 24px 0; }
+    /* ---------- Filtres ---------- */
+    .bar { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; justify-content: space-between; padding: 0 0 28px; opacity: 0; animation: fade 1s .9s var(--ease) forwards; }
+    .filters { display: flex; flex-wrap: wrap; gap: 4px; }
+    .filter {
+      font: inherit; font-size: .9rem; cursor: pointer; color: var(--muted); background: none;
+      border: 1px solid transparent; border-radius: 999px; padding: 7px 14px; transition: color .3s, border-color .3s, background .3s;
+    }
+    .filter:hover { color: var(--ink); }
+    .filter[aria-pressed=true] { color: var(--black); background: var(--ink); }
+    .search-box { position: relative; flex: 0 1 300px; min-width: 0; }
+    .search-box svg { position: absolute; left: 14px; top: 50%; width: 15px; height: 15px; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
     .search {
-      flex: 1 1 280px; max-width: 420px; min-width: 0; font: inherit; font-size: .9375rem;
-      color: var(--head); background: var(--deep); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 16px;
-      transition: border-color .2s var(--ease);
+      width: 100%; font: inherit; font-size: .92rem; color: var(--ink); background: rgba(255,255,255,.03);
+      border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px 10px 38px; transition: border-color .3s, background .3s;
     }
     .search::placeholder { color: var(--faint); }
-    .search:hover { border-color: var(--rule-strong); }
-    .filters { display: flex; flex-wrap: wrap; gap: 6px; }
-    .filter {
-      font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
-      cursor: pointer; color: var(--muted); background: transparent; border: 1px solid var(--rule);
-      border-radius: 2px; padding: 7px 10px; transition: color .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+    .search:focus { outline: none; border-color: var(--line-2); background: rgba(255,255,255,.05); }
+
+    /* ---------- Grille ---------- */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-flow: dense; gap: 14px; }
+    .card {
+      --a: 255, 255, 255; --x: 50%; --y: 50%;
+      position: relative; display: flex; flex-direction: column; text-decoration: none;
+      border-radius: 22px; padding: 10px 10px 22px; background: #050505;
+      border: 1px solid var(--line); overflow: hidden; isolation: isolate;
+      opacity: 0; transform: translateY(28px) scale(.98);
+      transition: border-color .5s var(--ease), transform .6s var(--ease);
     }
-    .filter:hover { color: var(--head); border-color: var(--rule-strong); }
-    .filter[aria-pressed=true] { color: var(--dark-ink); background: var(--kinpaku); border-color: var(--kinpaku); }
-    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-
-    .count { font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding-bottom: 16px; }
-
-    /* Grille : fines cloisons plutôt que cartes arrondies */
-    .grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-      background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+    .card.in { animation: enter 1s var(--ease) forwards; animation-delay: var(--d, 0s); }
+    @keyframes enter { to { opacity: 1; transform: none; } }
+    .card::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .5s;
+      background: radial-gradient(420px circle at var(--x) var(--y), rgba(var(--a), .16), transparent 60%);
     }
-    .item {
-      position: relative; display: flex; flex-direction: column; gap: 10px;
-      padding: 24px; background: var(--raised); text-decoration: none; min-height: 210px;
-      transition: background .25s var(--ease);
+    .card:hover { border-color: rgba(var(--a), .35); }
+    .card:hover::before { opacity: 1; }
+    .card.wide { grid-column: span 2; }
+
+    .stage {
+      position: relative; height: 230px; border-radius: 14px; overflow: hidden;
+      background: #0b0b0c; display: grid; place-items: center;
     }
-    .item::before {
-      content: ""; position: absolute; left: 0; top: 0; height: 1px; width: 0;
-      background: var(--kinpaku); transition: width .35s var(--ease);
+    .card.wide .stage { height: 270px; }
+    .body { padding: 20px 12px 0; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; }
+    .body h2 { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.1; letter-spacing: -.01em; }
+    .body .cat { font-size: .8rem; color: var(--faint); white-space: nowrap; }
+    .body p { grid-column: 1 / -1; color: var(--muted); font-size: .94rem; font-weight: 300; max-width: 52ch; }
+    .body .url { grid-column: 1 / -1; margin-top: 10px; font-size: .82rem; color: rgba(var(--a), .9); display: inline-flex; gap: 6px; align-items: center; }
+    .body .url svg { width: 11px; height: 11px; transition: transform .4s var(--ease); }
+    .card:hover .url svg { transform: translate(2px, -2px); }
+
+    /* animations en pause hors écran */
+    .card:not(.live) .stage *, .card:not(.live) .stage *::before, .card:not(.live) .stage *::after { animation-play-state: paused !important; }
+
+    .empty { display: none; padding: 80px 0; text-align: center; color: var(--muted); }
+    .empty button { margin-top: 14px; font: inherit; color: var(--ink); background: none; border: 1px solid var(--line-2); border-radius: 999px; padding: 8px 18px; cursor: pointer; }
+
+    footer { margin-top: 140px; border-top: 1px solid var(--line); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 32px; padding-bottom: 40px; color: var(--faint); font-size: .88rem; }
+    footer a { text-decoration: none; transition: color .3s; }
+    footer a:hover { color: var(--ink); }
+
+    /* =========================================================
+       Les 25 scènes — chacune propre à sa ressource
+       ========================================================= */
+
+    /* 1 Scrollslide : plans 3D qui défilent */
+    .v-scroll { perspective: 700px; }
+    .v-scroll .track { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(52deg) rotateZ(-18deg); }
+    .v-scroll .pl { position: absolute; left: 22%; width: 56%; height: 120px; border-radius: 12px; animation: scrollup 7s linear infinite; }
+    .v-scroll .pl:nth-child(1) { background: linear-gradient(135deg, #ff7a59, #ffb36b); }
+    .v-scroll .pl:nth-child(2) { background: linear-gradient(135deg, #5b5bff, #9a7bff); animation-delay: -1.75s; }
+    .v-scroll .pl:nth-child(3) { background: linear-gradient(135deg, #18c3a5, #7be0c3); animation-delay: -3.5s; }
+    .v-scroll .pl:nth-child(4) { background: linear-gradient(135deg, #f04ea0, #ff9bc8); animation-delay: -5.25s; }
+    @keyframes scrollup { from { transform: translateY(260px) translateZ(0); opacity: 0; } 15%, 80% { opacity: 1; } to { transform: translateY(-300px) translateZ(60px); opacity: 0; } }
+    .v-scroll .prog { position: absolute; right: 18px; top: 24px; bottom: 24px; width: 2px; background: rgba(255,255,255,.1); border-radius: 2px; }
+    .v-scroll .prog::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; background: #fff; border-radius: 2px; animation: prog 7s linear infinite; }
+    @keyframes prog { from { height: 0; } to { height: 100%; } }
+
+    /* 2 Minimal Gallery : cadres épurés */
+    .v-minimal { background: #f3f1ec; gap: 0; }
+    .v-minimal .frames { display: flex; gap: 14px; }
+    .v-minimal .f { width: 64px; height: 84px; border: 1px solid #1a1a1a; position: relative; background: #fff; }
+    .v-minimal .f::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 12px; height: 1px; background: #1a1a1a; transform-origin: left; animation: line 4.5s var(--ease) infinite; }
+    .v-minimal .f:nth-child(2)::after { animation-delay: .3s; }
+    .v-minimal .f:nth-child(3)::after { animation-delay: .6s; }
+    .v-minimal .f i { position: absolute; top: 14px; left: 10px; width: 14px; height: 14px; border-radius: 50%; background: #1a1a1a; animation: dotmove 4.5s var(--ease) infinite; }
+    @keyframes line { 0%, 10% { transform: scaleX(0); } 40%, 85% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes dotmove { 0%, 20% { transform: none; } 50%, 80% { transform: translate(28px, 22px); } 100% { transform: none; } }
+
+    /* 3 Godly : défilé de sites */
+    .v-godly { background: radial-gradient(circle at 50% 120%, #2a1650, #0b0b0c 70%); }
+    .v-godly .rows { transform: rotate(-12deg) scale(1.15); display: grid; gap: 12px; }
+    .v-godly .row { display: flex; gap: 12px; width: max-content; animation: marquee 16s linear infinite; }
+    .v-godly .row:nth-child(2) { animation-direction: reverse; animation-duration: 20s; }
+    .v-godly .row span { width: 120px; height: 72px; border-radius: 8px; flex: none; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* 4 Refero Styles : spécimen typographique */
+    .v-refero { background: #0d0c0a; }
+    .v-refero .aa { font-size: 6.5rem; line-height: 1; color: #f2e6cf; position: relative; width: 190px; height: 110px; }
+    .v-refero .aa span { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; animation: cyc 9s infinite; }
+    .v-refero .aa span:nth-child(1) { font-family: var(--serif); }
+    .v-refero .aa span:nth-child(2) { font-family: var(--sans); font-weight: 500; animation-delay: 3s; }
+    .v-refero .aa span:nth-child(3) { font-family: ui-monospace, Menlo, monospace; font-size: .8em; animation-delay: 6s; }
+    @keyframes cyc { 0% { opacity: 0; filter: blur(8px); } 8%, 30% { opacity: 1; filter: none; } 38%, 100% { opacity: 0; filter: blur(8px); } }
+    .v-refero .sw { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+    .v-refero .sw i { width: 18px; height: 18px; border-radius: 50%; }
+
+    /* 5 Component Gallery : variantes d'un même bouton */
+    .v-comp .gridb { display: grid; grid-template-columns: repeat(3, 76px); gap: 10px; }
+    .v-comp .b { height: 32px; display: grid; place-items: center; font-size: .72rem; color: #ddd; animation: pick 6s infinite; }
+    .v-comp .b:nth-child(1) { background: #fff; color: #000; border-radius: 6px; }
+    .v-comp .b:nth-child(2) { border: 1px solid #555; border-radius: 999px; animation-delay: 1s; }
+    .v-comp .b:nth-child(3) { background: #2f6bff; border-radius: 2px; animation-delay: 2s; }
+    .v-comp .b:nth-child(4) { background: #222; border-radius: 10px; animation-delay: 3s; }
+    .v-comp .b:nth-child(5) { text-decoration: underline; animation-delay: 4s; }
+    .v-comp .b:nth-child(6) { background: linear-gradient(#3ddc97, #1fa774); color: #032; border-radius: 8px; animation-delay: 5s; }
+    @keyframes pick { 0%, 14% { transform: scale(1.12); box-shadow: 0 0 0 2px #0b0b0c, 0 0 0 3px #fff; } 20%, 100% { transform: none; box-shadow: none; } }
+
+    /* 6 Mobbin : parcours d'écrans */
+    .v-mobbin { background: #0e1013; }
+    .v-mobbin .phones { display: flex; gap: 18px; align-items: center; }
+    .v-mobbin .ph { width: 62px; height: 124px; border-radius: 14px; border: 2px solid #2b2f36; background: #15181d; padding: 10px 7px; display: flex; flex-direction: column; gap: 5px; animation: lift 6s var(--ease) infinite; }
+    .v-mobbin .ph:nth-child(2) { animation-delay: 2s; }
+    .v-mobbin .ph:nth-child(3) { animation-delay: 4s; }
+    .v-mobbin .ph i { display: block; height: 7px; border-radius: 3px; background: #2b3038; }
+    .v-mobbin .ph i.h { height: 26px; background: #ffd23f; }
+    .v-mobbin .ph:nth-child(2) i.h { background: #6c8cff; }
+    .v-mobbin .ph:nth-child(3) i.h { background: #3ddc97; }
+    @keyframes lift { 0%, 25% { transform: translateY(-8px); border-color: #fff; } 33%, 100% { transform: none; border-color: #2b2f36; } }
+
+    /* 7 DESIGNmd : design system en Markdown */
+    .v-md { justify-items: start; padding: 0 30px; font-family: ui-monospace, Menlo, monospace; font-size: .8rem; line-height: 1.9; }
+    .v-md .code div { white-space: nowrap; overflow: hidden; width: 0; animation: type 8s steps(28) infinite; }
+    .v-md .code div:nth-child(2) { animation-delay: .6s; } .v-md .code div:nth-child(3) { animation-delay: 1.2s; }
+    .v-md .code div:nth-child(4) { animation-delay: 1.8s; } .v-md .code div:nth-child(5) { animation-delay: 2.4s; }
+    @keyframes type { 0% { width: 0; } 12%, 85% { width: 28ch; } 100% { width: 0; } }
+    .v-md .h { color: #fff; } .v-md .k { color: #8b8b8b; } .v-md .s { color: #e7b86b; } .v-md .dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; }
+
+    /* 8 VibePrompt : un prompt devient un tableau de bord */
+    .v-vibe { background: radial-gradient(circle at 50% 0%, #1c2a1f, #0b0b0c 70%); align-content: center; gap: 16px; }
+    .v-vibe .prompt { width: 250px; padding: 9px 12px; border-radius: 10px; border: 1px solid #2a3a2d; background: #0f1611; font-size: .78rem; color: #b8f5c4; white-space: nowrap; overflow: hidden; }
+    .v-vibe .prompt span { display: inline-block; overflow: hidden; vertical-align: bottom; width: 0; animation: typing 6s steps(26) infinite; border-right: 1.5px solid #b8f5c4; }
+    @keyframes typing { 0% { width: 0; } 35%, 90% { width: 26ch; } 100% { width: 0; } }
+    .v-vibe .bars { display: flex; align-items: end; gap: 8px; height: 70px; }
+    .v-vibe .bars i { width: 20px; border-radius: 4px 4px 0 0; background: linear-gradient(#7af59a, #2b9a4f); transform-origin: bottom; animation: grow 6s var(--ease) infinite; }
+    .v-vibe .bars i:nth-child(1) { height: 40%; } .v-vibe .bars i:nth-child(2) { height: 75%; animation-delay: .1s; } .v-vibe .bars i:nth-child(3) { height: 55%; animation-delay: .2s; }
+    .v-vibe .bars i:nth-child(4) { height: 95%; animation-delay: .3s; } .v-vibe .bars i:nth-child(5) { height: 65%; animation-delay: .4s; } .v-vibe .bars i:nth-child(6) { height: 85%; animation-delay: .5s; }
+    @keyframes grow { 0%, 38% { transform: scaleY(0); } 55%, 90% { transform: scaleY(1); } 100% { transform: scaleY(0); } }
+
+    /* 9 21st.dev : composants branchés à un agent */
+    .v-21st svg { width: 280px; height: 180px; }
+    .v-21st .wire { stroke: #333; stroke-width: 1; fill: none; }
+    .v-21st .pulse { stroke: #c9a7ff; stroke-width: 2; fill: none; stroke-dasharray: 14 200; animation: flow 2.6s linear infinite; }
+    .v-21st .pulse:nth-of-type(2) { animation-delay: .8s; } .v-21st .pulse:nth-of-type(3) { animation-delay: 1.6s; }
+    @keyframes flow { from { stroke-dashoffset: 214; } to { stroke-dashoffset: 0; } }
+    .v-21st .core { fill: #0b0b0c; stroke: #c9a7ff; stroke-width: 1.5; }
+    .v-21st .node { fill: #161616; stroke: #3a3a3a; }
+
+    /* 10 Kinetics : rebond et inertie */
+    .v-kin { background: #0d0b14; }
+    .v-kin .floor { position: absolute; left: 30px; right: 30px; bottom: 44px; height: 1px; background: #2a2440; }
+    .v-kin .ball { position: absolute; bottom: 45px; width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe08a, #ff8a3d 60%, #c24d1b); animation: bounce 1.4s cubic-bezier(.3, 0, .7, 1) infinite alternate, roll 5.6s linear infinite; }
+    @keyframes bounce { 0% { transform: translateY(0) scale(1.25, .78); } 12% { transform: translateY(-14px) scale(.92, 1.08); } 100% { transform: translateY(-130px) scale(1); } }
+    @keyframes roll { 0% { left: 14%; } 50% { left: calc(86% - 34px); } 100% { left: 14%; } }
+    .v-kin .shadow { position: absolute; bottom: 38px; width: 34px; height: 8px; border-radius: 50%; background: rgba(255,138,61,.35); filter: blur(3px); animation: roll 5.6s linear infinite, shade 1.4s cubic-bezier(.3,0,.7,1) infinite alternate; }
+    @keyframes shade { from { transform: scale(1.2); opacity: 1; } to { transform: scale(.5); opacity: .3; } }
+
+    /* 11 shadcn/ui : interface sobre et réutilisable */
+    .v-shadcn { background: #09090b; }
+    .v-shadcn .panel { width: 230px; border: 1px solid #27272a; border-radius: 10px; padding: 16px; display: grid; gap: 12px; font-size: .78rem; color: #e4e4e7; }
+    .v-shadcn .r { display: flex; justify-content: space-between; align-items: center; }
+    .v-shadcn .r small { color: #71717a; display: block; font-size: .68rem; }
+    .v-shadcn .sw { width: 34px; height: 19px; border-radius: 99px; background: #27272a; position: relative; animation: swbg 4s infinite; }
+    .v-shadcn .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 15px; height: 15px; border-radius: 50%; background: #fafafa; animation: swk 4s var(--ease) infinite; }
+    @keyframes swbg { 0%, 45% { background: #27272a; } 50%, 95% { background: #fafafa; } }
+    @keyframes swk { 0%, 45% { transform: none; background: #fafafa; } 50%, 95% { transform: translateX(15px); background: #09090b; } }
+    .v-shadcn .btn { height: 30px; border-radius: 6px; background: #fafafa; color: #09090b; display: grid; place-items: center; font-weight: 500; }
+
+    /* 12 Aceternity UI : faisceau lumineux sur grille */
+    .v-acet { background-color: #000; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 28px 28px; }
+    .v-acet .spot { position: absolute; top: -60%; left: -10%; width: 60%; height: 220%; background: linear-gradient(90deg, transparent, rgba(120, 180, 255, .35), transparent); filter: blur(18px); transform: rotate(25deg); animation: sweep 5s ease-in-out infinite; }
+    @keyframes sweep { 0% { left: -60%; } 100% { left: 120%; } }
+    .v-acet .t { position: relative; font-family: var(--serif); font-size: 2.8rem; background: linear-gradient(180deg, #fff, #6b7280); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .v-acet .beam { position: absolute; bottom: 30px; left: 15%; right: 15%; height: 1px; background: linear-gradient(90deg, transparent, #7cc4ff, transparent); animation: beam 3s ease-in-out infinite; }
+    @keyframes beam { 0%, 100% { opacity: .2; transform: scaleX(.3); } 50% { opacity: 1; transform: scaleX(1); } }
+
+    /* 13 Magic UI : bordure lumineuse + étincelles */
+    .v-magic .box { position: relative; width: 210px; height: 120px; border-radius: 16px; background: #0f0f12; display: grid; place-items: center; color: #e9e3ff; font-size: .95rem; overflow: hidden; }
+    .v-magic .box::before { content: ""; position: absolute; inset: -60%; background: conic-gradient(from 0deg, transparent 0 75%, #ff6ad5 85%, #8b5cf6 92%, transparent 100%); animation: spin 3.5s linear infinite; }
+    .v-magic .box::after { content: ""; position: absolute; inset: 1.5px; border-radius: 15px; background: #0f0f12; }
+    .v-magic .box span { position: relative; z-index: 1; }
+    .v-magic .spark { position: absolute; width: 8px; height: 8px; background: #fff; clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation: twinkle 2.4s infinite; }
+    @keyframes twinkle { 0%, 100% { transform: scale(0) rotate(0); opacity: 0; } 50% { transform: scale(1.4) rotate(90deg); opacity: 1; } }
+    @keyframes spin { to { transform: rotate(1turn); } }
+
+    /* 14 Motion Primitives : forme qui se métamorphose */
+    .v-motion { background: #0a0f0e; }
+    .v-motion .morph { width: 110px; height: 110px; background: linear-gradient(135deg, #2ee6c5, #1b8cff); animation: morph 6s var(--ease) infinite; }
+    @keyframes morph {
+      0%, 100% { border-radius: 18px; transform: rotate(0); }
+      25% { border-radius: 50%; transform: rotate(90deg) scale(.85); }
+      50% { border-radius: 50% 10% 50% 10%; transform: rotate(180deg) scale(1.05); }
+      75% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(270deg) scale(.9); }
     }
-    .item:hover { background: var(--graphite); }
-    .item:hover::before { width: 100%; }
-    .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
-    .num { color: var(--kinpaku-deep); }
-    .cat { color: var(--label); text-align: right; }
-    .item h2 { font-family: var(--sans); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: var(--head); margin-top: 6px; }
-    .item p { color: var(--muted); font-size: .9375rem; line-height: 1.65; flex: 1; }
-    .url { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: .75rem; color: var(--link); word-break: break-all; }
-    .url svg { width: 14px; height: 8px; flex: none; transition: transform .3s var(--ease); }
-    .item:hover .url svg { transform: translateX(4px); }
 
-    .empty { display: none; padding: 48px 0; color: var(--muted); }
-    .empty strong { color: var(--head); font-weight: 500; }
+    /* 15 Uiverse : éléments d'UI de la communauté */
+    .v-uiverse { background: #0f0d18; }
+    .v-uiverse .it { position: absolute; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-12px) rotate(3deg); } }
+    .v-uiverse .b1 { top: 30px; left: 26px; padding: 9px 16px; border-radius: 10px; background: #ffd23f; color: #1a1400; font-size: .75rem; font-weight: 500; box-shadow: 0 4px 0 #b8930a; }
+    .v-uiverse .b2 { top: 40px; right: 30px; width: 46px; height: 24px; border-radius: 99px; background: #7c5cff; animation-delay: -2s; }
+    .v-uiverse .b2::after { content: ""; position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+    .v-uiverse .b3 { bottom: 40px; left: 40px; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #2a2440; border-top-color: #ff5c8a; animation: spin 1s linear infinite; }
+    .v-uiverse .b4 { bottom: 36px; right: 34px; padding: 8px 14px; border-radius: 99px; border: 1.5px solid #3ddc97; color: #3ddc97; font-size: .72rem; animation-delay: -4s; }
+    .v-uiverse .b5 { top: 50%; left: 50%; width: 22px; height: 22px; margin: -11px; border-radius: 6px; background: #ff5c8a; display: grid; place-items: center; animation-delay: -1s; }
+    .v-uiverse .b5::after { content: ""; width: 8px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
 
-    footer { margin-top: 112px; border-top: 1px solid var(--rule); background: var(--deep); }
-    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 32px; padding-bottom: 32px; font-family: var(--mono); font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
-    footer a { text-decoration: none; transition: color .2s var(--ease); }
-    footer a:hover { color: var(--link); }
+    /* 16 Shadcnblocks : une page qui s'assemble */
+    .v-blocks .page { width: 230px; display: grid; gap: 7px; }
+    .v-blocks .page i { display: block; border-radius: 6px; background: #1c1c1f; border: 1px solid #2a2a2e; opacity: 0; animation: snap 6s var(--ease) infinite; }
+    .v-blocks .page .nav { height: 16px; }
+    .v-blocks .page .bh { height: 54px; background: #f4f4f5; border-color: #f4f4f5; animation-delay: .3s; }
+    .v-blocks .page .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; background: none; border: 0; animation-delay: .6s; }
+    .v-blocks .page .cols b { height: 38px; border-radius: 6px; background: #1c1c1f; border: 1px solid #2a2a2e; }
+    .v-blocks .page .foot { height: 14px; animation-delay: .9s; }
+    @keyframes snap { 0% { opacity: 0; transform: translateY(-16px); } 12%, 85% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 
-    @media (max-width: 960px) {
+    /* 17 mapcn : itinéraire sur une carte */
+    .v-map { background: #0c1416; }
+    .v-map svg { width: 100%; height: 100%; }
+    .v-map .road { stroke: #1d2c30; stroke-width: 8; fill: none; stroke-linecap: round; }
+    .v-map .route { stroke: #4fd1c5; stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 640; animation: draw 5s var(--ease) infinite; }
+    @keyframes draw { 0% { stroke-dashoffset: 640; } 60%, 90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 640; } }
+    .v-map .pin { transform-box: fill-box; transform-origin: bottom; animation: drop 5s var(--ease) infinite; }
+    @keyframes drop { 0%, 55% { transform: translateY(-30px); opacity: 0; } 65%, 90% { transform: none; opacity: 1; } 100% { opacity: 0; } }
+    .v-map .pop { position: absolute; right: 9%; top: 18%; padding: 6px 10px; border-radius: 8px; background: #fff; color: #0c1416; font-size: .72rem; font-weight: 500; animation: drop 5s var(--ease) infinite; }
+
+    /* 18 Awwwards : médaille qui brille */
+    .v-aw { background: radial-gradient(circle, #1a1a1a, #070707 70%); }
+    .v-aw .medal { width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 1rem; text-align: center; line-height: 1.1; color: #2a1e00; position: relative; overflow: hidden;
+      background: conic-gradient(from 0deg, #f7e7a6, #c9a14a, #fff3c4, #b88a2a, #f7e7a6); box-shadow: 0 0 0 6px #111, 0 0 0 7px #3a2f14; animation: tilt 6s ease-in-out infinite; }
+    .v-aw .medal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.7) 50%, transparent 65%); transform: translateX(-120%); animation: shine 3s ease-in-out infinite; }
+    @keyframes shine { 60%, 100% { transform: translateX(120%); } }
+    @keyframes tilt { 50% { transform: rotateY(25deg) rotateX(8deg); } }
+    .v-aw .rib { position: absolute; bottom: 30px; display: flex; gap: 40px; }
+    .v-aw .rib i { width: 18px; height: 40px; background: #8a1c1c; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%); }
+
+    /* 19 Liquid Glass : lentille de verre sur couleurs mouvantes */
+    .v-glass .blob { position: absolute; width: 130px; height: 130px; border-radius: 50%; filter: blur(4px); animation: orbit 9s ease-in-out infinite; }
+    .v-glass .blob.a { background: #ff5ea8; top: 20%; left: 18%; }
+    .v-glass .blob.b { background: #4f7cff; top: 35%; left: 48%; animation-delay: -3s; }
+    .v-glass .blob.c { background: #ffd23f; top: 5%; left: 60%; width: 90px; height: 90px; animation-delay: -6s; }
+    @keyframes orbit { 33% { transform: translate(60px, 30px) scale(1.1); } 66% { transform: translate(-40px, 20px) scale(.9); } }
+    .v-glass .lens { position: relative; width: 62%; height: 58%; border-radius: 28px; backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6);
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), inset 0 -10px 30px rgba(255,255,255,.08), 0 20px 50px rgba(0,0,0,.4);
+      display: grid; place-items: center; font-family: var(--serif); font-size: 2rem; color: #fff; }
+
+    /* 20 CSS Text Effects : texte animé */
+    .v-text { background: #08080a; }
+    .v-text .word { font-family: var(--serif); font-size: 4.4rem; font-style: italic; letter-spacing: -.02em; line-height: 1.1; }
+    .v-text .word span { display: inline-block; padding: 0 .02em; background: linear-gradient(90deg, #ff8a3d, #ff3d8a, #8a3dff, #3dd2ff, #ff8a3d); background-size: 500% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: wave 2.4s ease-in-out infinite, hue 6s linear infinite; }
+    .v-text .word span:nth-child(2) { animation-delay: .1s; } .v-text .word span:nth-child(3) { animation-delay: .2s; } .v-text .word span:nth-child(4) { animation-delay: .3s; }
+    .v-text .word span:nth-child(5) { animation-delay: .4s; }
+    @keyframes hue { to { background-position: 500% 0; } }
+    @keyframes wave { 50% { transform: translateY(-10px); } }
+
+    /* 21 Circle Loaders : anneaux concentriques */
+    .v-loaders .ring { position: absolute; border-radius: 50%; border: 3px solid transparent; }
+    .v-loaders .r1 { width: 130px; height: 130px; border-top-color: #ff6a3d; border-right-color: #ff6a3d; animation: spin 1.8s linear infinite; }
+    .v-loaders .r2 { width: 96px; height: 96px; border-bottom-color: #ffd23f; border-left-color: #ffd23f; animation: spin 1.4s linear infinite reverse; }
+    .v-loaders .r3 { width: 62px; height: 62px; border-top-color: #3ddc97; animation: spin 1s linear infinite; }
+    .v-loaders .core { width: 14px; height: 14px; border-radius: 50%; background: #fff; animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(.5); opacity: .5; } }
+
+    /* 22 Gradient Buttons : bouton en dégradé */
+    .v-gbtn .gb { position: relative; padding: 15px 34px; border-radius: 999px; font-size: .95rem; color: #fff; isolation: isolate; overflow: hidden; }
+    .v-gbtn .gb::before { content: ""; position: absolute; inset: -150%; z-index: -2; background: conic-gradient(#ff3d8a, #ffb13d, #3dffb4, #3d8aff, #b13dff, #ff3d8a); animation: spin 4s linear infinite; }
+    .v-gbtn .gb::after { content: ""; position: absolute; inset: 2px; z-index: -1; border-radius: 999px; background: #0b0b0c; }
+    .v-gbtn .glow { position: absolute; width: 200px; height: 60px; border-radius: 999px; background: conic-gradient(#ff3d8a, #ffb13d, #3dffb4, #3d8aff, #b13dff, #ff3d8a); filter: blur(30px); opacity: .45; animation: spin 4s linear infinite; }
+
+    /* 23 Shadertoy : plasma calculé en direct */
+    .v-shader canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: auto; }
+
+    /* 24 3Dicons : cube 3D */
+    .v-3d { perspective: 600px; background: radial-gradient(circle at 50% 40%, #1a1630, #0b0b0c 70%); }
+    .v-3d .cube { width: 86px; height: 86px; position: relative; transform-style: preserve-3d; animation: cube 9s linear infinite; }
+    .v-3d .cube i { position: absolute; inset: 0; border-radius: 14px; }
+    .v-3d .cube i:nth-child(1) { transform: translateZ(43px); background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+    .v-3d .cube i:nth-child(2) { transform: rotateY(180deg) translateZ(43px); background: #5b21b6; }
+    .v-3d .cube i:nth-child(3) { transform: rotateY(90deg) translateZ(43px); background: linear-gradient(135deg, #f0abfc, #c026d3); }
+    .v-3d .cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(43px); background: #86198f; }
+    .v-3d .cube i:nth-child(5) { transform: rotateX(90deg) translateZ(43px); background: linear-gradient(135deg, #fde68a, #f59e0b); }
+    .v-3d .cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(43px); background: #92400e; }
+    @keyframes cube { from { transform: rotateX(-22deg) rotateY(0); } to { transform: rotateX(-22deg) rotateY(1turn); } }
+    .v-3d .sh { position: absolute; bottom: 36px; width: 110px; height: 16px; border-radius: 50%; background: rgba(124, 58, 237, .35); filter: blur(10px); }
+
+    /* 25 Anime.js : vague décalée sur une grille de points */
+    .v-anime .dots { display: grid; grid-template-columns: repeat(9, 12px); gap: 12px; }
+    .v-anime .dots i { width: 12px; height: 12px; border-radius: 50%; background: #ff4b4b; animation: stag 2.2s ease-in-out infinite; animation-delay: calc(var(--i) * 80ms); }
+    @keyframes stag { 0%, 100% { transform: scale(.35); opacity: .35; } 40% { transform: scale(1) translateY(-6px); opacity: 1; background: #ffd0d0; } }
+
+    /* ---------- Responsive & accessibilité ---------- */
+    @media (max-width: 980px) {
       .grid { grid-template-columns: repeat(2, 1fr); }
-      .intro { grid-template-columns: 1fr; gap: 24px; padding-top: 56px; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .wrap { padding: 0 16px; }
       .grid { grid-template-columns: 1fr; }
-      .item { min-height: 0; }
-      .search { max-width: none; }
+      .card.wide { grid-column: auto; }
+      .card.wide .stage, .stage { height: 220px; }
+      .hero { padding: 40px 0 56px; }
+      .search-box { flex-basis: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before { transition: none !important; }
+      *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition: none !important; }
+      .hero h1 .w > span, .card { transform: none !important; opacity: 1 !important; }
     }
   </style>
 </head>
@@ -164,121 +382,210 @@
   <header>
     <div class="wrap">
       <nav>
-        <a class="brand" href="index.html" aria-label="Triply, accueil">
+        <a class="brand" href="index.html" aria-label="Triply, retour à l'accueil">
           <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M9 19c4-1 6-6 14-8-3 3-5 7-6 11l-2-4-6 1z" fill="var(--kinpaku)"/>
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M9 19c4-1 6-6 14-8-3 3-5 7-6 11l-2-4-6 1z" fill="currentColor"/>
           </svg>
-          <span class="wordmark">Triply</span>
+          Triply
         </a>
-        <a class="navlink" href="index.html">← Accueil</a>
+        <a class="back" href="index.html">Retour à l'accueil</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="intro">
-      <div>
-        <span class="eyebrow">Boîte à outils · 25 ressources</span>
-        <h1>Créer avec l'IA, <span>sans bricoler.</span></h1>
-      </div>
-      <p class="lead">Inspiration, design systems, composants, animations et effets : une sélection de sites pour concevoir des interfaces web modernes plus vite.</p>
+    <section class="hero">
+      <div class="halo" aria-hidden="true"></div>
+      <h1 aria-label="Les outils qui font les beaux sites.">
+        <span class="w"><span style="animation-delay:.05s">Les</span></span>
+        <span class="w"><span style="animation-delay:.12s">outils</span></span>
+        <span class="w"><span style="animation-delay:.19s">qui</span></span>
+        <span class="w"><span style="animation-delay:.26s">font</span></span>
+        <span class="w"><span style="animation-delay:.33s">les</span></span>
+        <span class="w"><span style="animation-delay:.40s">beaux</span></span>
+        <span class="w"><span style="animation-delay:.47s">sites.</span></span>
+      </h1>
+      <p>25 ressources pour trouver l'inspiration, choisir des composants et animer vos interfaces quand vous construisez avec l'IA.</p>
     </section>
 
-    <div class="seam" aria-hidden="true"></div>
-
-    <div class="toolbar">
-      <input class="search" id="q" type="search" placeholder="Rechercher une ressource…" aria-label="Rechercher une ressource">
+    <div class="bar">
       <div class="filters" id="filters" role="group" aria-label="Filtrer par catégorie"></div>
+      <label class="search-box">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="m11 11 3.5 3.5"/></svg>
+        <input class="search" id="q" type="search" placeholder="Rechercher" aria-label="Rechercher une ressource">
+      </label>
     </div>
-    <p class="count" id="count" aria-live="polite"></p>
+
     <section class="grid" id="grid"></section>
-    <p class="empty" id="empty"><strong>Aucun résultat.</strong> Essayez un autre mot ou une autre catégorie.</p>
+    <div class="empty" id="empty">
+      <p>Aucune ressource ne correspond à cette recherche.</p>
+      <button type="button" id="reset">Tout afficher</button>
+    </div>
   </main>
 
   <footer>
     <div class="wrap">
       <span>© <span id="year"></span> Triply</span>
-      <a href="https://github.com/winssi/Triply">Le projet sur GitHub ↗</a>
+      <a href="https://github.com/winssi/Triply">Le projet sur GitHub</a>
     </div>
   </footer>
 
   <script>
+    const dots = n => Array.from({ length: n }, (_, i) => `<i style="--i:${(i % 9) + Math.floor(i / 9)}"></i>`).join('');
+    const godlyRow = cols => { const s = cols.map(c => `<span style="background:${c}"></span>`).join(''); return `<div class="row">${s}${s}</div>`; };
+
+    // [nom, site, catégorie, description, couleur d'accent (r,g,b), large ?, scène]
     const ressources = [
-      ["Scrollslide", "scrollslide.co", "Prompts & code", "600+ prompts primés et code source complet pour des sites 3D et pilotés au scroll : 100+ scènes 3D, 200+ dégradés interactifs, 200+ composants UI."],
-      ["Minimal Gallery", "minimal.gallery", "Inspiration", "Sélection de sites haut de gamme pour nourrir votre agent."],
-      ["Godly", "godly.website", "Inspiration", "Sites choisis à la main pour la qualité de leur réalisation."],
-      ["Refero Styles", "styles.refero.design", "Design system", "2 000+ styles de vrais produits, avec leur typographie."],
-      ["Component Gallery", "component.gallery", "Design system", "2 600+ exemples montrant comment les grands design systems traitent un même élément."],
-      ["Mobbin", "mobbin.com", "Inspiration", "Parcours d'apps réels, issus de vrais produits."],
-      ["DESIGNmd", "designmd.ai", "Design system", "Design systems au format Markdown, lisibles par un agent."],
-      ["VibePrompt", "vibeprompts.dev", "Prompts & code", "Prompts prêts à l'emploi pour dashboards et landing pages."],
-      ["21st.dev", "21st.dev", "Composants UI", "Registre de composants qui se branche aux agents via MCP."],
-      ["Kinetics", "kinetics.colorion.co", "Animation", "150+ effets de mouvement, avec code React et prompts."],
-      ["shadcn/ui", "ui.shadcn.com", "Composants UI", "Toujours la référence pour une UI propre et réutilisable."],
-      ["Aceternity UI", "ui.aceternity.com", "Composants UI", "200+ composants React/Tailwind animés."],
-      ["Magic UI", "magicui.design", "Composants UI", "Composants soignés pour les web apps modernes."],
-      ["Motion Primitives", "motion-primitives.com", "Animation", "Composants d'animation et d'interaction prêts à l'emploi."],
-      ["Uiverse", "uiverse.io", "Composants UI", "Éléments d'UI et composants interactifs créés par la communauté."],
-      ["Shadcnblocks", "shadcnblocks.com", "Composants UI", "Des blocs complets, pas seulement des boutons."],
-      ["mapcn", "mapcn.dev", "Composants UI", "Composants de carte : marqueurs, itinéraires, popups."],
-      ["Awwwards", "awwwards.com", "Inspiration", "Les sites qui ont réellement été primés."],
-      ["Liquid Glass", "glass.samasante.com", "Effets visuels", "Composants et effets de réfraction façon verre."],
-      ["CSS Text Effects", "text-effects.colorion.co", "Effets visuels", "Animations et effets de texte créatifs en CSS."],
-      ["Circle Loaders", "circleloaders.dominikakissi.com", "Animation", "Animations et indicateurs de chargement créatifs."],
-      ["Gradient Buttons", "gradientbuttons.colorion.co", "Effets visuels", "Styles et effets de boutons en dégradé."],
-      ["Shadertoy", "shadertoy.com", "Effets visuels", "Shaders à étudier et à remixer."],
-      ["3Dicons", "3dicons.co", "Ressources graphiques", "Bibliothèque d'icônes 3D gratuites pour interfaces modernes."],
-      ["Anime.js", "animejs.com", "Animation", "Bibliothèque JavaScript d'animation légère pour le web."]
+      ["Scrollslide", "scrollslide.co", "Prompts & code", "600+ prompts primés et le code source complet pour des sites 3D pilotés au scroll : 100+ scènes 3D, 200+ dégradés interactifs, 200+ composants.", "255,140,90", true,
+        `<div class="stage v-scroll"><div class="track"><div class="pl"></div><div class="pl"></div><div class="pl"></div><div class="pl"></div></div><div class="prog"></div></div>`],
+      ["Minimal Gallery", "minimal.gallery", "Inspiration", "Des sites haut de gamme triés sur le volet pour nourrir votre agent.", "240,236,228", false,
+        `<div class="stage v-minimal"><div class="frames"><div class="f"><i></i></div><div class="f"></div><div class="f"></div></div></div>`],
+      ["Godly", "godly.website", "Inspiration", "Des sites choisis à la main pour la qualité de leur réalisation.", "170,130,255", false,
+        `<div class="stage v-godly"><div class="rows">${godlyRow(['#ff6a3d','#2b2b2b','#7c5cff','#f4f1ea','#18c3a5'])}${godlyRow(['#ffd23f','#1b1b1b','#ff5ea8','#3d8aff','#eee'])}${godlyRow(['#222','#3ddc97','#ff3d3d','#f4f1ea','#5b21b6'])}</div></div>`],
+      ["Refero Styles", "styles.refero.design", "Design system", "2 000+ styles tirés de vrais produits, avec leur typographie.", "242,230,207", false,
+        `<div class="stage v-refero"><div class="aa"><span>Aa</span><span>Aa</span><span>Aa</span></div><div class="sw"><i style="background:#f2e6cf"></i><i style="background:#c9643b"></i><i style="background:#2c3a2f"></i><i style="background:#8aa1b1"></i></div></div>`],
+      ["Component Gallery", "component.gallery", "Design system", "2 600+ exemples : comment les grands design systems traitent un même composant.", "120,160,255", false,
+        `<div class="stage v-comp"><div class="gridb"><span class="b">Bouton</span><span class="b">Bouton</span><span class="b">Bouton</span><span class="b">Bouton</span><span class="b">Bouton</span><span class="b">Bouton</span></div></div>`],
+      ["Mobbin", "mobbin.com", "Inspiration", "Les parcours d'écrans de vraies applications, étape par étape.", "255,210,63", false,
+        `<div class="stage v-mobbin"><div class="phones"><div class="ph"><i class="h"></i><i></i><i></i><i></i></div><div class="ph"><i></i><i class="h"></i><i></i><i></i></div><div class="ph"><i></i><i></i><i class="h"></i><i></i></div></div></div>`],
+      ["DESIGNmd", "designmd.ai", "Design system", "Des design systems écrits en Markdown, que votre agent peut lire directement.", "231,184,107", false,
+        `<div class="stage v-md"><div class="code"><div class="h"># Couleurs</div><div><span class="k">--primary:</span> <span class="dot" style="background:#e7b86b"></span><span class="s">#E7B86B</span></div><div><span class="k">--surface:</span> <span class="dot" style="background:#1b1b1b;border:1px solid #444"></span><span class="s">#1B1B1B</span></div><div class="h"># Typographie</div><div><span class="k">--display:</span> <span class="s">"Serif", 48px</span></div></div></div>`],
+      ["VibePrompt", "vibeprompts.dev", "Prompts & code", "Des prompts prêts à l'emploi pour générer dashboards et landing pages.", "122,245,154", false,
+        `<div class="stage v-vibe"><div class="prompt"><span>Crée un dashboard de ventes</span></div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>`],
+      ["21st.dev", "21st.dev", "Composants UI", "Un registre de composants qui se branche directement à vos agents via MCP.", "201,167,255", false,
+        `<div class="stage v-21st"><svg viewBox="0 0 280 180" aria-hidden="true"><path class="wire" d="M40 40 C110 40 110 90 140 90"/><path class="wire" d="M40 140 C110 140 110 90 140 90"/><path class="wire" d="M240 90 L140 90"/><path class="pulse" d="M40 40 C110 40 110 90 140 90"/><path class="pulse" d="M40 140 C110 140 110 90 140 90"/><path class="pulse" d="M240 90 L140 90"/><rect class="node" x="14" y="26" width="52" height="28" rx="7"/><rect class="node" x="14" y="126" width="52" height="28" rx="7"/><rect class="node" x="214" y="76" width="52" height="28" rx="7"/><circle class="core" cx="140" cy="90" r="20"/><circle cx="140" cy="90" r="5" fill="#c9a7ff"/></svg></div>`],
+      ["Kinetics", "kinetics.colorion.co", "Animation", "150+ effets de mouvement, avec leur code React et leurs prompts.", "255,160,80", false,
+        `<div class="stage v-kin"><div class="floor"></div><div class="shadow"></div><div class="ball"></div></div>`],
+      ["shadcn/ui", "ui.shadcn.com", "Composants UI", "Toujours la référence pour une interface propre et réutilisable.", "250,250,250", false,
+        `<div class="stage v-shadcn"><div class="panel"><div class="r"><span>Notifications<small>Recevoir les alertes</small></span><span class="sw"></span></div><div class="r"><span>Mode avion<small>Couper le réseau</small></span><span class="sw" style="animation-delay:-2s"></span></div><div class="btn">Enregistrer</div></div></div>`],
+      ["Aceternity UI", "ui.aceternity.com", "Composants UI", "200+ composants React et Tailwind animés, aux effets de lumière soignés.", "124,196,255", true,
+        `<div class="stage v-acet"><div class="spot"></div><div class="t">Lumière, mouvement.</div><div class="beam"></div></div>`],
+      ["Magic UI", "magicui.design", "Composants UI", "Des composants raffinés pour les applications web modernes.", "255,106,213", false,
+        `<div class="stage v-magic"><div class="box"><span>Effet magique</span></div><i class="spark" style="top:26%;left:20%"></i><i class="spark" style="top:70%;left:78%;animation-delay:.8s"></i><i class="spark" style="top:20%;left:80%;animation-delay:1.6s"></i></div>`],
+      ["Motion Primitives", "motion-primitives.com", "Animation", "Des composants d'animation et d'interaction prêts à l'emploi.", "46,230,197", false,
+        `<div class="stage v-motion"><div class="morph"></div></div>`],
+      ["Uiverse", "uiverse.io", "Composants UI", "Des milliers d'éléments d'interface créés et partagés par la communauté.", "255,92,138", false,
+        `<div class="stage v-uiverse"><span class="it b1">Cliquez</span><span class="it b2"></span><span class="it b3"></span><span class="it b4">Suivre</span><span class="it b5"></span></div>`],
+      ["Shadcnblocks", "shadcnblocks.com", "Composants UI", "Des sections de page complètes, pas seulement des boutons.", "244,244,245", false,
+        `<div class="stage v-blocks"><div class="page"><i class="nav"></i><i class="bh"></i><i class="cols"><b></b><b></b><b></b></i><i class="foot"></i></div></div>`],
+      ["mapcn", "mapcn.dev", "Composants UI", "Des composants de carte : marqueurs, itinéraires, popups.", "79,209,197", true,
+        `<div class="stage v-map"><svg viewBox="0 0 600 270" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="road" d="M-20 200 L160 170 L240 60 L620 90"/><path class="road" d="M120 -10 L200 280"/><path class="road" d="M330 280 L380 -10"/><path class="road" d="M-20 80 L620 230"/><path class="route" d="M60 215 C160 190 170 120 240 110 S 380 140 400 90 S 470 60 505 72"/><circle cx="60" cy="215" r="6" fill="#4fd1c5"/><g class="pin"><path d="M505 72c0-14-11-24-22-24s-22 10-22 24c0 16 22 34 22 34s22-18 22-34z" transform="translate(22 -34)" fill="#fff"/><circle cx="505" cy="38" r="7" fill="#0c1416"/></g></svg><span class="pop">Arrivée · 12 min</span></div>`],
+      ["Awwwards", "awwwards.com", "Inspiration", "Les sites qui ont réellement été primés par le jury.", "247,231,166", false,
+        `<div class="stage v-aw"><div class="rib"><i></i><i></i></div><div class="medal">Site<br>du jour</div></div>`],
+      ["Liquid Glass", "glass.samasante.com", "Effets visuels", "Des composants et effets de réfraction, façon verre liquide.", "130,170,255", true,
+        `<div class="stage v-glass"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i><div class="lens">Verre</div></div>`],
+      ["CSS Text Effects", "text-effects.colorion.co", "Effets visuels", "Des animations et effets de texte créatifs, en pur CSS.", "255,61,138", false,
+        `<div class="stage v-text"><div class="word"><span>V</span><span>a</span><span>g</span><span>u</span><span>e</span></div></div>`],
+      ["Circle Loaders", "circleloaders.dominikakissi.com", "Animation", "Des animations de chargement créatives et circulaires.", "255,106,61", false,
+        `<div class="stage v-loaders"><i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i><i class="core"></i></div>`],
+      ["Gradient Buttons", "gradientbuttons.colorion.co", "Effets visuels", "Des styles et effets de boutons en dégradé.", "255,177,61", false,
+        `<div class="stage v-gbtn"><i class="glow"></i><span class="gb">Commencer</span></div>`],
+      ["Shadertoy", "shadertoy.com", "Effets visuels", "Des milliers de shaders à étudier, modifier et remixer.", "255,90,200", true,
+        `<div class="stage v-shader"><canvas width="160" height="72" data-shader></canvas></div>`],
+      ["3Dicons", "3dicons.co", "Ressources graphiques", "Une bibliothèque d'icônes 3D gratuites pour les interfaces modernes.", "167,139,250", false,
+        `<div class="stage v-3d"><div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div><i class="sh"></i></div>`],
+      ["Anime.js", "animejs.com", "Animation", "Une bibliothèque JavaScript légère pour animer le web.", "255,75,75", false,
+        `<div class="stage v-anime"><div class="dots">${dots(45)}</div></div>`]
     ];
 
     document.getElementById('year').textContent = new Date().getFullYear();
     const grid = document.getElementById('grid');
     const filters = document.getElementById('filters');
     const q = document.getElementById('q');
-    const arrow = '<svg viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 4h13M10 1l3 3-3 3"/></svg>';
-    let cat = 'Toutes';
+    const ext = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg>';
+    let cat = 'Tout';
 
-    for (const c of ['Toutes', ...new Set(ressources.map(r => r[2]))]) {
+    // Construction des cartes (une seule fois)
+    const cards = ressources.map(([nom, site, categorie, desc, rgb, wide, scene]) => {
+      const a = document.createElement('a');
+      a.className = 'card' + (wide ? ' wide' : '');
+      a.href = 'https://' + site;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.style.setProperty('--a', rgb);
+      a.setAttribute('aria-label', `${nom} : ${desc} (s'ouvre dans un nouvel onglet)`);
+      a.innerHTML = scene.replace('class="stage', 'aria-hidden="true" class="stage') +
+        `<div class="body"><h2></h2><span class="cat"></span><p></p><span class="url"><span></span>${ext}</span></div>`;
+      a.querySelector('h2').textContent = nom;
+      a.querySelector('.cat').textContent = categorie;
+      a.querySelector('p').textContent = desc;
+      a.querySelector('.url span').textContent = site;
+      a.dataset.cat = categorie;
+      a.dataset.text = (nom + ' ' + site + ' ' + categorie + ' ' + desc).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      a.addEventListener('pointermove', e => {
+        const r = a.getBoundingClientRect();
+        a.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        a.style.setProperty('--y', (e.clientY - r.top) + 'px');
+      });
+      grid.append(a);
+      return a;
+    });
+
+    // Filtres
+    for (const c of ['Tout', ...new Set(ressources.map(r => r[2]))]) {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'filter'; b.textContent = c;
       b.setAttribute('aria-pressed', c === cat);
-      b.addEventListener('click', () => {
-        cat = c;
-        filters.querySelectorAll('.filter').forEach(x => x.setAttribute('aria-pressed', x === b));
-        render();
-      });
+      b.addEventListener('click', () => setCat(c));
       filters.append(b);
     }
-
-    const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-
+    function setCat(c) {
+      cat = c;
+      filters.querySelectorAll('.filter').forEach(x => x.setAttribute('aria-pressed', x.textContent === c));
+      render();
+    }
     function render() {
-      const term = norm(q.value.trim());
-      grid.innerHTML = '';
+      const term = q.value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
       let n = 0;
-      ressources.forEach(([nom, site, categorie, desc], i) => {
-        if (cat !== 'Toutes' && categorie !== cat) return;
-        if (term && !norm(`${nom} ${site} ${categorie} ${desc}`).includes(term)) return;
-        n++;
-        const a = document.createElement('a');
-        a.className = 'item';
-        a.href = 'https://' + site;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.innerHTML = `<div class="meta"><span class="num">N°${String(i + 1).padStart(2, '0')}</span><span class="cat"></span></div><h2></h2><p></p><span class="url"><span></span>${arrow}</span>`;
-        a.querySelector('.cat').textContent = categorie;
-        a.querySelector('h2').textContent = nom;
-        a.querySelector('p').textContent = desc;
-        a.querySelector('.url span').textContent = site;
-        grid.append(a);
+      cards.forEach(card => {
+        const ok = (cat === 'Tout' || card.dataset.cat === cat) && (!term || card.dataset.text.includes(term));
+        card.hidden = !ok;
+        if (ok) n++;
       });
-      document.getElementById('count').textContent = `${n} ressource${n > 1 ? 's' : ''}`;
-      grid.style.display = n ? '' : 'none';
       document.getElementById('empty').style.display = n ? 'none' : 'block';
     }
     q.addEventListener('input', render);
-    render();
+    document.getElementById('reset').addEventListener('click', () => { q.value = ''; setCat('Tout'); });
+
+    // Entrée orchestrée + pause des animations hors écran
+    let order = 0;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const card = e.target;
+        card.classList.toggle('live', e.isIntersecting);
+        if (e.isIntersecting && !card.classList.contains('in')) {
+          card.style.setProperty('--d', (Math.min(order++, 5) * 0.08 + (performance.now() < 1500 ? 0.6 : 0)) + 's');
+          card.classList.add('in');
+          setTimeout(() => { order = 0; }, 120);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(c => io.observe(c));
+
+    // Shadertoy : petit plasma calculé en temps réel
+    const cv = document.querySelector('[data-shader]');
+    const ctx = cv.getContext('2d');
+    const img = ctx.createImageData(cv.width, cv.height);
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function plasma(t) {
+      const card = cv.closest('.card');
+      if (card.classList.contains('live') || !t) {
+        const w = cv.width, h = cv.height, s = t / 1000;
+        for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+          const u = x / w * 6, v = y / h * 3;
+          const k = Math.sin(u + s) + Math.sin(v * 1.6 - s * 1.3) + Math.sin((u + v) * .7 + s * .8) + Math.sin(Math.hypot(u - 3, v - 1.5) * 1.8 - s * 1.5);
+          const i = (y * w + x) * 4;
+          img.data[i] = 128 + 127 * Math.sin(k * Math.PI * .5);
+          img.data[i + 1] = 60 + 60 * Math.sin(k * Math.PI * .5 + 2.1);
+          img.data[i + 2] = 150 + 105 * Math.sin(k * Math.PI * .5 + 4.2);
+          img.data[i + 3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+      }
+      if (!still) requestAnimationFrame(plasma);
+    }
+    plasma(0);
   </script>
 </body>
 </html>
