@@ -4,7 +4,180 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Outils — Triply</title>
+  <meta name="description" content="25 ressources de design et de code pour créer des sites web modernes avec l'IA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf7f1; --ink: #1d2a33; --muted: #5b6a73; --accent: #e8643c;
+      --sea: #1f6f78; --card: #ffffff; --line: #e9e1d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #11181d; --ink: #f2ede6; --muted: #a3b0b7; --accent: #f07a52;
+        --sea: #5fb3bb; --card: #18222a; --line: #26333c;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--ink); font-family: Inter, system-ui, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    header { padding: 24px 0; }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.6rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo svg { width: 30px; height: 30px; }
+    .back { text-decoration: none; font-weight: 500; font-size: .95rem; }
+
+    .intro { padding: 32px 0 28px; }
+    .eyebrow { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--sea); margin-bottom: 12px; }
+    h1 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 14px; }
+    h1 em { font-style: italic; color: var(--accent); }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 36em; }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 28px; }
+    .search { flex: 1 1 220px; font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; min-width: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font: inherit; font-size: .88rem; cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 6px 13px; border-radius: 999px; }
+    .chip[aria-pressed=true] { background: var(--sea); border-color: var(--sea); color: #fff; }
+    .search:focus, .chip:focus-visible, .card:focus-visible { outline: 2px solid var(--sea); outline-offset: 2px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 24px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; text-decoration: none; display: flex; flex-direction: column; gap: 8px; transition: transform .15s, border-color .15s; }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+    .num { font-family: Fraunces, Georgia, serif; color: var(--accent); font-size: 1.1rem; }
+    .tag { font-size: .72rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--sea); }
+    .card h2 { font-size: 1.12rem; line-height: 1.3; }
+    .card p { color: var(--muted); font-size: .94rem; flex: 1; }
+    .url { font-size: .85rem; color: var(--accent); word-break: break-all; }
+    .empty { color: var(--muted); padding: 20px 0 60px; display: none; }
+    .count { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 48px; color: var(--muted); font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="index.html">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M9 19c4-1 6-6 14-8-3 3-5 7-6 11l-2-4-6 1z" fill="var(--accent)"/>
+          </svg>
+          Triply
+        </a>
+        <a class="back" href="index.html">← Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <span class="eyebrow">Boîte à outils</span>
+      <h1>25 ressources pour <em>créer avec l'IA.</em></h1>
+      <p class="lead">Inspiration, design systems, composants, animations et effets : une sélection de sites pour concevoir des interfaces web modernes plus vite.</p>
+    </section>
+
+    <div class="toolbar">
+      <input class="search" id="q" type="search" placeholder="Rechercher une ressource…" aria-label="Rechercher une ressource">
+      <div class="chips" id="chips" role="group" aria-label="Filtrer par catégorie"></div>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <section class="grid" id="grid"></section>
+    <p class="empty" id="empty">Aucune ressource ne correspond à votre recherche.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Triply</span>
+      <a href="https://github.com/winssi/Triply">Voir le projet sur GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    const ressources = [
+      ["Scrollslide", "scrollslide.co", "Prompts & code", "600+ prompts primés et code source complet pour des sites 3D et pilotés au scroll : 100+ scènes 3D, 200+ dégradés interactifs, 200+ composants UI."],
+      ["Minimal Gallery", "minimal.gallery", "Inspiration", "Sélection de sites haut de gamme pour nourrir votre agent."],
+      ["Godly", "godly.website", "Inspiration", "Sites choisis à la main pour la qualité de leur réalisation."],
+      ["Refero Styles", "styles.refero.design", "Design system", "2 000+ styles de vrais produits, avec leur typographie."],
+      ["Component Gallery", "component.gallery", "Design system", "2 600+ exemples montrant comment les grands design systems traitent un même élément."],
+      ["Mobbin", "mobbin.com", "Inspiration", "Parcours d'apps réels, issus de vrais produits."],
+      ["DESIGNmd", "designmd.ai", "Design system", "Design systems au format Markdown, lisibles par un agent."],
+      ["VibePrompt", "vibeprompts.dev", "Prompts & code", "Prompts prêts à l'emploi pour dashboards et landing pages."],
+      ["21st.dev", "21st.dev", "Composants UI", "Registre de composants qui se branche aux agents via MCP."],
+      ["Kinetics", "kinetics.colorion.co", "Animation", "150+ effets de mouvement, avec code React et prompts."],
+      ["shadcn/ui", "ui.shadcn.com", "Composants UI", "Toujours la référence pour une UI propre et réutilisable."],
+      ["Aceternity UI", "ui.aceternity.com", "Composants UI", "200+ composants React/Tailwind animés."],
+      ["Magic UI", "magicui.design", "Composants UI", "Composants soignés pour les web apps modernes."],
+      ["Motion Primitives", "motion-primitives.com", "Animation", "Composants d'animation et d'interaction prêts à l'emploi."],
+      ["Uiverse", "uiverse.io", "Composants UI", "Éléments d'UI et composants interactifs créés par la communauté."],
+      ["Shadcnblocks", "shadcnblocks.com", "Composants UI", "Des blocs complets, pas seulement des boutons."],
+      ["mapcn", "mapcn.dev", "Composants UI", "Composants de carte : marqueurs, itinéraires, popups."],
+      ["Awwwards", "awwwards.com", "Inspiration", "Les sites qui ont réellement été primés."],
+      ["Liquid Glass", "glass.samasante.com", "Effets visuels", "Composants et effets de réfraction façon verre."],
+      ["CSS Text Effects", "text-effects.colorion.co", "Effets visuels", "Animations et effets de texte créatifs en CSS."],
+      ["Circle Loaders", "circleloaders.dominikakissi.com", "Animation", "Animations et indicateurs de chargement créatifs."],
+      ["Gradient Buttons", "gradientbuttons.colorion.co", "Effets visuels", "Styles et effets de boutons en dégradé."],
+      ["Shadertoy", "shadertoy.com", "Effets visuels", "Shaders à étudier et à remixer."],
+      ["3Dicons", "3dicons.co", "Ressources graphiques", "Bibliothèque d'icônes 3D gratuites pour interfaces modernes."],
+      ["Anime.js", "animejs.com", "Animation", "Bibliothèque JavaScript d'animation légère pour le web."]
+    ];
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const grid = document.getElementById('grid');
+    const chips = document.getElementById('chips');
+    const q = document.getElementById('q');
+    let cat = 'Toutes';
+
+    const cats = ['Toutes', ...new Set(ressources.map(r => r[2]))];
+    for (const c of cats) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = c;
+      b.setAttribute('aria-pressed', c === cat);
+      b.addEventListener('click', () => {
+        cat = c;
+        chips.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === b));
+        render();
+      });
+      chips.append(b);
+    }
+
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+    function render() {
+      const term = norm(q.value.trim());
+      grid.innerHTML = '';
+      let n = 0;
+      ressources.forEach(([nom, site, categorie, desc], i) => {
+        if (cat !== 'Toutes' && categorie !== cat) return;
+        if (term && !norm(nom + ' ' + site + ' ' + categorie + ' ' + desc).includes(term)) return;
+        n++;
+        const a = document.createElement('a');
+        a.className = 'card';
+        a.href = 'https://' + site;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.innerHTML = `
+          <div class="card-top"><span class="num">${String(i + 1).padStart(2, '0')}</span><span class="tag"></span></div>
+          <h2></h2><p></p><span class="url"></span>`;
+        a.querySelector('.tag').textContent = categorie;
+        a.querySelector('h2').textContent = nom;
+        a.querySelector('p').textContent = desc;
+        a.querySelector('.url').textContent = site + ' ↗';
+        grid.append(a);
+      });
+      document.getElementById('count').textContent = `${n} ressource${n > 1 ? 's' : ''}`;
+      document.getElementById('empty').style.display = n ? 'none' : 'block';
+    }
+    q.addEventListener('input', render);
+    render();
+  </script>
 </body>
 </html>
