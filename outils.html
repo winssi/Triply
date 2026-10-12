@@ -7,97 +7,199 @@
   <meta name="description" content="25 ressources de design et de code pour créer des sites web modernes avec l'IA.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Alumni+Sans:wght@100;300;400&display=swap" rel="stylesheet">
   <style>
+    /* Système visuel inspiré de « Neo Kinpaku » (pbakaus/impeccable, DESIGN.md, Apache-2.0) */
     :root {
-      --bg: #fbf7f1; --ink: #1d2a33; --muted: #5b6a73; --accent: #e8643c;
-      --sea: #1f6f78; --card: #ffffff; --line: #e9e1d6;
+      --kinpaku: oklch(84% 0.19 80.46);
+      --kinpaku-pale: oklch(86% 0.07 84);
+      --kinpaku-deep: oklch(61% 0.085 78);
+      --patina: oklch(70% 0.12 188);
+      --patina-text: oklch(76% 0.088 190);
+      --dark-ink: oklch(14% 0.018 95);
+
+      --ground: oklch(7% 0.006 95);
+      --deep: oklch(4% 0.004 95);
+      --raised: oklch(11% 0.006 95);
+      --graphite: oklch(15% 0.008 95);
+      --graphite-2: oklch(19% 0.008 95);
+
+      --head: oklch(91% 0 0);
+      --text: oklch(88% 0 0);
+      --muted: oklch(72% 0 0);
+      --faint: oklch(62% 0 0);
+
+      --rule: oklch(78% 0 0 / 0.16);
+      --rule-strong: oklch(74% 0.09 82 / 0.6);
+      --link: var(--kinpaku);
+      --label: var(--patina-text);
+      --focus: var(--patina);
+
+      --display: "Alumni Sans", "Albert Sans", Arial, sans-serif;
+      --sans: "Albert Sans", "Avenir Next", "Helvetica Neue", Arial, system-ui, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, "Roboto Mono", Consolas, monospace;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+      color-scheme: dark;
     }
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
       :root {
-        --bg: #11181d; --ink: #f2ede6; --muted: #a3b0b7; --accent: #f07a52;
-        --sea: #5fb3bb; --card: #18222a; --line: #26333c;
+        --ground: oklch(97% 0.012 95);
+        --deep: oklch(94% 0.014 95);
+        --raised: oklch(99% 0.008 95);
+        --graphite: oklch(91% 0.012 95);
+        --graphite-2: oklch(88% 0.014 95);
+        --head: oklch(18% 0.02 95);
+        --text: oklch(25% 0.018 95);
+        --muted: oklch(45% 0.015 95);
+        --faint: oklch(55% 0.012 95);
+        --rule: oklch(25% 0.02 95 / 0.14);
+        --rule-strong: oklch(49% 0.08 188 / 0.7);
+        /* Sur papier, l'or ne sert pas pour le petit texte : le vert-de-gris prend le relais */
+        --link: oklch(49% 0.08 188);
+        --label: oklch(49% 0.08 188);
+        --focus: oklch(49% 0.08 188);
+        color-scheme: light;
       }
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--ink); font-family: Inter, system-ui, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--ground); color: var(--text);
+      font-family: var(--sans); font-size: 1rem; line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
     a { color: inherit; }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    header { padding: 24px 0; }
-    nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .logo { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.6rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-    .logo svg { width: 30px; height: 30px; }
-    .back { text-decoration: none; font-weight: 500; font-size: .95rem; }
+    /* En-tête */
+    header { border-bottom: 1px solid var(--rule); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--head); }
+    .brand svg { width: 26px; height: 26px; }
+    .wordmark { font-family: var(--display); font-weight: 400; font-size: 1.375rem; letter-spacing: .15em; text-transform: uppercase; line-height: 1; }
+    .navlink { font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color .2s var(--ease); }
+    .navlink:hover { color: var(--link); }
 
-    .intro { padding: 32px 0 28px; }
-    .eyebrow { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--sea); margin-bottom: 12px; }
-    h1 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 14px; }
-    h1 em { font-style: italic; color: var(--accent); }
-    .lead { font-size: 1.1rem; color: var(--muted); max-width: 36em; }
+    /* Intro */
+    .intro { padding: 80px 0 48px; display: grid; grid-template-columns: 1fr minmax(0, 26rem); gap: 48px; align-items: end; }
+    .eyebrow { display: block; font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--label); margin-bottom: 20px; }
+    h1 {
+      font-family: var(--display); font-weight: 100; color: var(--head);
+      font-size: clamp(3.4rem, 6.5vw, 5.6rem); line-height: 1.02; letter-spacing: -.01em;
+    }
+    h1 span { color: var(--kinpaku); font-weight: 300; }
+    .lead { color: var(--muted); max-width: 65ch; }
+    .seam { height: 1px; background: linear-gradient(90deg, var(--kinpaku) 0, var(--kinpaku-deep) 40%, transparent 100%); opacity: .8; }
 
-    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 28px; }
-    .search { flex: 1 1 220px; font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; min-width: 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { font: inherit; font-size: .88rem; cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 6px 13px; border-radius: 999px; }
-    .chip[aria-pressed=true] { background: var(--sea); border-color: var(--sea); color: #fff; }
-    .search:focus, .chip:focus-visible, .card:focus-visible { outline: 2px solid var(--sea); outline-offset: 2px; }
+    /* Barre d'outils */
+    .toolbar { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; padding: 24px 0; }
+    .search {
+      flex: 1 1 280px; max-width: 420px; min-width: 0; font: inherit; font-size: .9375rem;
+      color: var(--head); background: var(--deep); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 16px;
+      transition: border-color .2s var(--ease);
+    }
+    .search::placeholder { color: var(--faint); }
+    .search:hover { border-color: var(--rule-strong); }
+    .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter {
+      font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      cursor: pointer; color: var(--muted); background: transparent; border: 1px solid var(--rule);
+      border-radius: 2px; padding: 7px 10px; transition: color .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .filter:hover { color: var(--head); border-color: var(--rule-strong); }
+    .filter[aria-pressed=true] { color: var(--dark-ink); background: var(--kinpaku); border-color: var(--kinpaku); }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 24px; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; text-decoration: none; display: flex; flex-direction: column; gap: 8px; transition: transform .15s, border-color .15s; }
-    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-    .num { font-family: Fraunces, Georgia, serif; color: var(--accent); font-size: 1.1rem; }
-    .tag { font-size: .72rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--sea); }
-    .card h2 { font-size: 1.12rem; line-height: 1.3; }
-    .card p { color: var(--muted); font-size: .94rem; flex: 1; }
-    .url { font-size: .85rem; color: var(--accent); word-break: break-all; }
-    .empty { color: var(--muted); padding: 20px 0 60px; display: none; }
-    .count { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+    .count { font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding-bottom: 16px; }
 
-    footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 48px; color: var(--muted); font-size: .9rem; }
-    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    /* Grille : fines cloisons plutôt que cartes arrondies */
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+    }
+    .item {
+      position: relative; display: flex; flex-direction: column; gap: 10px;
+      padding: 24px; background: var(--raised); text-decoration: none; min-height: 210px;
+      transition: background .25s var(--ease);
+    }
+    .item::before {
+      content: ""; position: absolute; left: 0; top: 0; height: 1px; width: 0;
+      background: var(--kinpaku); transition: width .35s var(--ease);
+    }
+    .item:hover { background: var(--graphite); }
+    .item:hover::before { width: 100%; }
+    .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
+    .num { color: var(--kinpaku-deep); }
+    .cat { color: var(--label); text-align: right; }
+    .item h2 { font-family: var(--sans); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: var(--head); margin-top: 6px; }
+    .item p { color: var(--muted); font-size: .9375rem; line-height: 1.65; flex: 1; }
+    .url { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: .75rem; color: var(--link); word-break: break-all; }
+    .url svg { width: 14px; height: 8px; flex: none; transition: transform .3s var(--ease); }
+    .item:hover .url svg { transform: translateX(4px); }
 
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+    .empty { display: none; padding: 48px 0; color: var(--muted); }
+    .empty strong { color: var(--head); font-weight: 500; }
+
+    footer { margin-top: 112px; border-top: 1px solid var(--rule); background: var(--deep); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 32px; padding-bottom: 32px; font-family: var(--mono); font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+    footer a { text-decoration: none; transition: color .2s var(--ease); }
+    footer a:hover { color: var(--link); }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .intro { grid-template-columns: 1fr; gap: 24px; padding-top: 56px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px; }
+      .grid { grid-template-columns: 1fr; }
+      .item { min-height: 0; }
+      .search { max-width: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before { transition: none !important; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
       <nav>
-        <a class="logo" href="index.html">
+        <a class="brand" href="index.html" aria-label="Triply, accueil">
           <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M9 19c4-1 6-6 14-8-3 3-5 7-6 11l-2-4-6 1z" fill="var(--accent)"/>
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 19c4-1 6-6 14-8-3 3-5 7-6 11l-2-4-6 1z" fill="var(--kinpaku)"/>
           </svg>
-          Triply
+          <span class="wordmark">Triply</span>
         </a>
-        <a class="back" href="index.html">← Accueil</a>
+        <a class="navlink" href="index.html">← Accueil</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
     <section class="intro">
-      <span class="eyebrow">Boîte à outils</span>
-      <h1>25 ressources pour <em>créer avec l'IA.</em></h1>
+      <div>
+        <span class="eyebrow">Boîte à outils · 25 ressources</span>
+        <h1>Créer avec l'IA, <span>sans bricoler.</span></h1>
+      </div>
       <p class="lead">Inspiration, design systems, composants, animations et effets : une sélection de sites pour concevoir des interfaces web modernes plus vite.</p>
     </section>
 
+    <div class="seam" aria-hidden="true"></div>
+
     <div class="toolbar">
       <input class="search" id="q" type="search" placeholder="Rechercher une ressource…" aria-label="Rechercher une ressource">
-      <div class="chips" id="chips" role="group" aria-label="Filtrer par catégorie"></div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer par catégorie"></div>
     </div>
     <p class="count" id="count" aria-live="polite"></p>
     <section class="grid" id="grid"></section>
-    <p class="empty" id="empty">Aucune ressource ne correspond à votre recherche.</p>
+    <p class="empty" id="empty"><strong>Aucun résultat.</strong> Essayez un autre mot ou une autre catégorie.</p>
   </main>
 
   <footer>
     <div class="wrap">
       <span>© <span id="year"></span> Triply</span>
-      <a href="https://github.com/winssi/Triply">Voir le projet sur GitHub</a>
+      <a href="https://github.com/winssi/Triply">Le projet sur GitHub ↗</a>
     </div>
   </footer>
 
@@ -132,21 +234,21 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
     const grid = document.getElementById('grid');
-    const chips = document.getElementById('chips');
+    const filters = document.getElementById('filters');
     const q = document.getElementById('q');
+    const arrow = '<svg viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 4h13M10 1l3 3-3 3"/></svg>';
     let cat = 'Toutes';
 
-    const cats = ['Toutes', ...new Set(ressources.map(r => r[2]))];
-    for (const c of cats) {
+    for (const c of ['Toutes', ...new Set(ressources.map(r => r[2]))]) {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'chip'; b.textContent = c;
+      b.type = 'button'; b.className = 'filter'; b.textContent = c;
       b.setAttribute('aria-pressed', c === cat);
       b.addEventListener('click', () => {
         cat = c;
-        chips.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === b));
+        filters.querySelectorAll('.filter').forEach(x => x.setAttribute('aria-pressed', x === b));
         render();
       });
-      chips.append(b);
+      filters.append(b);
     }
 
     const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -157,23 +259,22 @@
       let n = 0;
       ressources.forEach(([nom, site, categorie, desc], i) => {
         if (cat !== 'Toutes' && categorie !== cat) return;
-        if (term && !norm(nom + ' ' + site + ' ' + categorie + ' ' + desc).includes(term)) return;
+        if (term && !norm(`${nom} ${site} ${categorie} ${desc}`).includes(term)) return;
         n++;
         const a = document.createElement('a');
-        a.className = 'card';
+        a.className = 'item';
         a.href = 'https://' + site;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
-        a.innerHTML = `
-          <div class="card-top"><span class="num">${String(i + 1).padStart(2, '0')}</span><span class="tag"></span></div>
-          <h2></h2><p></p><span class="url"></span>`;
-        a.querySelector('.tag').textContent = categorie;
+        a.innerHTML = `<div class="meta"><span class="num">N°${String(i + 1).padStart(2, '0')}</span><span class="cat"></span></div><h2></h2><p></p><span class="url"><span></span>${arrow}</span>`;
+        a.querySelector('.cat').textContent = categorie;
         a.querySelector('h2').textContent = nom;
         a.querySelector('p').textContent = desc;
-        a.querySelector('.url').textContent = site + ' ↗';
+        a.querySelector('.url span').textContent = site;
         grid.append(a);
       });
       document.getElementById('count').textContent = `${n} ressource${n > 1 ? 's' : ''}`;
+      grid.style.display = n ? '' : 'none';
       document.getElementById('empty').style.display = n ? 'none' : 'block';
     }
     q.addEventListener('input', render);
